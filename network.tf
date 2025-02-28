@@ -1,0 +1,75 @@
+#network.ft
+resource "aws_vpc" "idsecure-vpc" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+
+  tags = {
+    Name        = "idsecure-main-vpc"
+    Terraformed = var.terraform_tag
+  }
+}
+
+resource "aws_internet_gateway" "idsecure-igw" {
+  vpc_id = aws_vpc.idsecure-vpc.id
+
+  tags = {
+    Name        = "idsecure-internet-gateway"
+    Terraformed = var.terraform_tag
+  }
+}
+
+resource "aws_route_table" "idsecure-public_rt" {
+  vpc_id = aws_vpc.idsecure-vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.idsecure-igw.id
+  }
+
+  tags = {
+    Name        = "idsecure-public-route-table"
+    Terraformed = var.terraform_tag
+  }
+}
+
+resource "aws_route_table_association" "idsecure-public_rta" {
+  subnet_id      = aws_subnet.idsecure-public_subnet.id
+  route_table_id = aws_route_table.idsecure-public_rt.id
+}
+
+resource "aws_subnet" "idsecure-public_subnet" {
+  vpc_id                  = aws_vpc.idsecure-vpc.id
+  cidr_block              = "10.0.1.0/24"
+  map_public_ip_on_launch = true
+  availability_zone       = var.availability_zone
+
+  tags = {
+    Name        = "idsecure-public-subnet"
+    Terraformed = var.terraform_tag
+  }
+}
+
+resource "aws_security_group" "idsecure-ssh_sg" {
+  vpc_id = aws_vpc.idsecure-vpc.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = var.trusted_ips
+    description = "Allow SSH from trusted IPs"
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name        = "idsecure-SG-SSH"
+    Terraformed = var.terraform_tag
+  }
+}
