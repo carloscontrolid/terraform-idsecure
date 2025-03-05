@@ -61,6 +61,21 @@ resource "aws_security_group" "idsecure-ssh_sg" {
     description = "Allow SSH from trusted IPs"
   }
 
+  ingress {
+    from_port   = 8000
+    to_port     = 8000
+    protocol    = "tcp"
+    cidr_blocks = var.trusted_ips
+    description = "Portainer8000"
+  }
+  ingress {
+    from_port   = 9443
+    to_port     = 9443
+    protocol    = "tcp"
+    cidr_blocks = var.trusted_ips
+    description = "Portainer9443"
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
