@@ -6,6 +6,7 @@ resource "aws_instance" "idsecure-homolog-01" {
   vpc_security_group_ids = [aws_security_group.idsecure-ssh_sg.id]
   subnet_id              = aws_subnet.idsecure-public_subnet.id
   availability_zone      = var.availability_zone
+  associate_public_ip_address = true
 
   tags = {
     Name        = "idsecure-homolog-01"
