@@ -51,5 +51,5 @@ variable "ssh_enable" {
 variable "trusted_ips" {
   description = "Lista de IPs confiáveis para acesso SSH"
   type        = list(string)
-  default     = ["200.171.205.98/32", "177.76.206.204/32", "179.193.77.224"]
+  default     = ["200.171.205.98/32", "177.76.206.204/32", "179.193.77.224/32"]
 }
