@@ -21,7 +21,7 @@ resource "aws_db_instance" "idsecure-rds" {
 
 resource "aws_db_subnet_group" "idsecure-db-subnet-group" {
   name       = "idsecure-db-subnet-group"
-  subnet_ids = [aws_subnet.idsecure-public_subnet.id]
+  subnet_ids = [aws_subnet.idsecure-public_subnet.id, aws_subnet.idsecure-public_subnet_b.id]
 
   tags = {
     Name        = "idsecure-db-subnet-group"
@@ -49,6 +49,18 @@ resource "aws_security_group" "idsecure-db_sg" {
 
   tags = {
     Name        = "idsecure-db-sg"
+    Terraformed = var.terraform_tag
+  }
+}
+
+resource "aws_subnet" "idsecure-public_subnet_b" {
+  vpc_id                  = aws_vpc.idsecure-vpc.id
+  cidr_block              = "10.0.2.0/24"
+  map_public_ip_on_launch = true
+  availability_zone       = "sa-east-1b"
+
+  tags = {
+    Name        = "idsecure-public-subnet-b"
     Terraformed = var.terraform_tag
   }
 }
