@@ -53,3 +53,16 @@ variable "trusted_ips" {
   type        = list(string)
   default     = ["177.84.240.162/32", "177.76.206.204/32", "200.171.205.98/32", "179.193.77.224/32", "187.75.34.21/32", "201.6.116.97/32"]
 }
+
+####### DATABASE #######
+variable "db_username" {
+  description = "Usuário do banco de dados RDS"
+  type        = string
+  sensitive   = true
+}
+
+variable "db_password" {
+  description = "Senha do banco de dados RDS"
+  type        = string
+  sensitive   = true
+}
