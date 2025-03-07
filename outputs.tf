@@ -12,10 +12,10 @@ output "allowed_ips" {
 }
 
 ####### DataBase #######
-output "rds_endpoint" {
-  value = aws_db_instance.idsecure-rds.endpoint
-}
+# output "rds_endpoint" {
+#   value = aws_db_instance.idsecure-rds.endpoint
+# }
 
-output "rds_address" {
-  value = aws_db_instance.idsecure-rds.address
-}
+# output "rds_address" {
+#   value = aws_db_instance.idsecure-rds.address
+# }
