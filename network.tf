@@ -150,17 +150,3 @@ resource "aws_security_group" "idsecure-sg-portainer" {
     Terraformed = var.terraform_tag
   }
 }
-
-# DB Subnet Group
-resource "aws_db_subnet_group" "idsecure-rds-sg" {
-  name       = "idsecure-rds-subnet-group"
-  subnet_ids = [
-    aws_subnet.idsecure-private_subnet_a.id,
-    aws_subnet.idsecure-private_subnet_b.id
-  ]
-
-  tags = {
-    Name        = "idsecure-rds-subnet-group"
-    Terraformed = var.terraform_tag
-  }
-}
