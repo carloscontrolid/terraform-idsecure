@@ -95,6 +95,30 @@ resource "aws_route_table_association" "idsecure-public_rta_b" {
 }
 
 # Security Group
+resource "aws_security_group" "idsecure-ssh_sg" {
+  vpc_id = aws_vpc.idsecure-vpc.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = var.trusted_ips
+    description = "Allow SSH from trusted IPs"
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name        = "idsecure-SG-SSH"
+    Terraformed = var.terraform_tag
+  }
+}
+
 resource "aws_security_group" "idsecure-sg-ssh" {
   vpc_id = aws_vpc.idsecure-vpc.id
 
