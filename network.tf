@@ -95,7 +95,7 @@ resource "aws_route_table_association" "idsecure-public_rta_b" {
 }
 
 # Security Group
-resource "aws_security_group" "idsecure-ssh_sg" {
+resource "aws_security_group" "idsecure-sg-ssh" {
   vpc_id = aws_vpc.idsecure-vpc.id
 
   ingress {
@@ -106,6 +106,22 @@ resource "aws_security_group" "idsecure-ssh_sg" {
     description = "Allow SSH from trusted IPs"
   }
 
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name        = "idsecure-sg-ssh"
+    Terraformed = var.terraform_tag
+  }
+}
+
+resource "aws_security_group" "idsecure-sg-portainer" {
+  vpc_id = aws_vpc.idsecure-vpc.id
+
   ingress {
     from_port   = 8000
     to_port     = 8000
@@ -113,28 +129,13 @@ resource "aws_security_group" "idsecure-ssh_sg" {
     cidr_blocks = var.trusted_ips
     description = "Portainer8000"
   }
+
   ingress {
     from_port   = 9443
     to_port     = 9443
     protocol    = "tcp"
     cidr_blocks = var.trusted_ips
     description = "Portainer9443"
-  }
-
-  ingress {
-    from_port   = 3389
-    to_port     = 3389
-    protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
-    description = "Allow RDP from trusted IPs"
-  }
-
-  ingress {
-    from_port   = 5432
-    to_port     = 5432
-    protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
-    description = "Allow PostgreSQL from trusted IPs"
   }
 
   egress {
@@ -145,7 +146,7 @@ resource "aws_security_group" "idsecure-ssh_sg" {
   }
 
   tags = {
-    Name        = "idsecure-SG-SSH"
+    Name        = "idsecure-sg-portainer"
     Terraformed = var.terraform_tag
   }
 }
