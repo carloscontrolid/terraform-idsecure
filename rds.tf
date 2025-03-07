@@ -11,7 +11,7 @@ resource "aws_db_instance" "idsecure-rds" {
   username               = var.db_username
   password               = var.db_password
   db_subnet_group_name   = aws_db_subnet_group.idsecure-rds-sg.name
-  vpc_security_group_ids = [aws_security_group.idsecure-sg-db.id]
+  vpc_security_group_ids = [aws_security_group.idsecure-sg-db.id, idsecure-sng-rds.id]
   publicly_accessible    = true
   skip_final_snapshot    = true
 
@@ -31,6 +31,19 @@ resource "aws_db_subnet_group" "idsecure-rds-sg" {
 
   tags = {
     Name        = "idsecure-rds-subnet-group"
+    Terraformed = var.terraform_tag
+  }
+}
+
+resource "aws_db_subnet_group" "idsecure-sng-rds" {
+  name       = "idsecure-subnet-group-rds"
+  subnet_ids = [
+    aws_subnet.idsecure-public_subnet_a.id,
+    aws_subnet.idsecure-public_subnet_b.id
+  ]
+
+  tags = {
+    Name        = "idsecure-subnet-group-rds"
     Terraformed = var.terraform_tag
   }
 }
