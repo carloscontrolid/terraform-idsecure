@@ -8,7 +8,7 @@ output "public_ips" {
 }
 
 output "allowed_ips" {
-  value = distinct(flatten(aws_security_group.idsecure-ssh_sg.ingress[*].cidr_blocks))
+  value = distinct(flatten(aws_security_group.idsecure-sg-ssh.ingress[*].cidr_blocks))
 }
 
 ####### DataBase #######
