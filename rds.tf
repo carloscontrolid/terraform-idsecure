@@ -11,7 +11,7 @@ resource "aws_db_instance" "idsecure-rds" {
   username               = var.db_username
   password               = var.db_password
   db_subnet_group_name   = aws_db_subnet_group.idsecure-rds-sg.name
-  vpc_security_group_ids = [aws_security_group.idsecure-sg-db.id, aws_security_group.idsecure-sng-rds.id]
+  vpc_security_group_ids = [aws_security_group.idsecure-sg-db.id]
   publicly_accessible    = true
   skip_final_snapshot    = true
 
