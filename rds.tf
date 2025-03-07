@@ -20,7 +20,7 @@ resource "aws_db_instance" "idsecure-rds" {
   }
 }
 
-# Security Group
+# DataBase Security Group
 resource "aws_security_group" "idsecure-db_sg" {
   vpc_id = aws_vpc.idsecure-vpc.id
 
