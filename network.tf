@@ -122,6 +122,14 @@ resource "aws_security_group" "idsecure-ssh_sg" {
     description = "Portainer9443"
   }
 
+  ingress {
+    from_port   = 3389
+    to_port     = 3389
+    protocol    = "tcp"
+    cidr_blocks = var.trusted_ips
+    description = "Allow RDP from trusted IPs" # Add RDP
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
