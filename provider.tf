@@ -1,4 +1,4 @@
-#provider.ft
+# provider.ft
 terraform {
   cloud {
     organization = "ControliD"

@@ -1,4 +1,4 @@
-#output.ft
+# output.ft
 output "instance_ids" {
   value = {
     idsecure-homolog-01 = aws_instance.idsecure-homolog-01.id
@@ -14,10 +14,10 @@ output "public_ips" {
 }
 
 output "allowed_ips" {
-  value = aws_security_group.idsecure-ssh_sg.ingress[*].cidr_blocks
+  value = distinct(flatten(aws_security_group.idsecure-ssh_sg.ingress[*].cidr_blocks))
 }
 
-####### DATABASE #######
+####### DataBase #######
 output "rds_endpoint" {
   value = aws_db_instance.idsecure-rds.endpoint
 }
@@ -25,3 +25,8 @@ output "rds_endpoint" {
 output "rds_address" {
   value = aws_db_instance.idsecure-rds.address
 }
+
+####### Windows #######
+# output "Administrator_Password" {
+#    value = [aws_instance.ec2.password_data]
+#  }

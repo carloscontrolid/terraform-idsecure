@@ -1,5 +1,4 @@
 # network.tf
-
 # VPC
 resource "aws_vpc" "idsecure-vpc" {
   cidr_block           = "10.0.0.0/16"
@@ -127,7 +126,7 @@ resource "aws_security_group" "idsecure-ssh_sg" {
     to_port     = 3389
     protocol    = "tcp"
     cidr_blocks = var.trusted_ips
-    description = "Allow RDP from trusted IPs" # Add RDP
+    description = "Allow RDP from trusted IPs"
   }
 
   egress {
