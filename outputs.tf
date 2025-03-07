@@ -1,16 +1,10 @@
-# output.ft
+# output.tf
 output "instance_ids" {
-  value = {
-    idsecure-homolog-01 = aws_instance.idsecure-homolog-01.id
-    # idsecure-homolog-02 = aws_instance.idsecure-homolog-02.id
-  }
+  value = {idsecure-homolog-01 = aws_instance.idsecure-homolog-01.id}
 }
 
 output "public_ips" {
-  value = {
-    idsecure-homolog-01 = aws_instance.idsecure-homolog-01.public_ip
-    # idsecure-homolog-02 = aws_instance.idsecure-homolog-02.public_ip
-  }
+  value = {idsecure-homolog-01 = aws_instance.idsecure-homolog-01.public_ip}
 }
 
 output "allowed_ips" {
@@ -25,8 +19,3 @@ output "rds_endpoint" {
 output "rds_address" {
   value = aws_db_instance.idsecure-rds.address
 }
-
-####### Windows #######
-# output "Administrator_Password" {
-#    value = [aws_instance.ec2.password_data]
-#  }
