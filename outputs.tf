@@ -1,4 +1,5 @@
 # output.tf
+
 output "instance_ids" {
   value = {idsecure-homolog-01 = aws_instance.idsecure-homolog-01.id}
 }
@@ -12,10 +13,14 @@ output "allowed_ips" {
 }
 
 ####### DataBase #######
-output "rds_endpoint" {
+output "postgresql_endpoint" {
   value = aws_db_instance.idsecure-rds.endpoint
 }
 
-output "rds_address" {
-  value = aws_db_instance.idsecure-rds.address
+output "mysql_endpoint" {
+  value = aws_db_instance.idsecure-mysql-rds.endpoint
+}
+
+output "memorydb_endpoint" {
+  value = aws_memorydb_cluster.idsecure-memorydb.cluster_endpoint
 }

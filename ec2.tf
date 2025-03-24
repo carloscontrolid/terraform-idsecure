@@ -1,4 +1,5 @@
 # ec2.tf
+
 resource "aws_instance" "idsecure-homolog-01" {
   ami                    = var.ubuntu_ami_id
   instance_type          = var.instance_type
