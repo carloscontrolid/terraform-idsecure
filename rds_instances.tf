@@ -29,7 +29,7 @@ resource "aws_memorydb_cluster" "idsecure-memorydb" {
   num_shards               = 1
   security_group_ids       = [aws_security_group.idsecure-sg-memorydb.id]
   subnet_group_name        = aws_memorydb_subnet_group.idsecure-memorydb-sg.name
-  tls_enabled              = true
+  tls_enabled              = false
   port                     = 6379
 
   tags = {
