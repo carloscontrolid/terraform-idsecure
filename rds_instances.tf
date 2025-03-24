@@ -1,4 +1,4 @@
-# PostgreSQL
+# rds_instances.tf
 # MySQL
 resource "aws_db_instance" "idsecure-mysql-rds" {
   identifier             = "idsecure-mysql-db"
@@ -23,7 +23,7 @@ resource "aws_db_instance" "idsecure-mysql-rds" {
 
 # MemoryDB
 resource "aws_memorydb_cluster" "idsecure-memorydb" {
-  acl_name                 = "idsecure-acl"
+  acl_name                 = "open-access"
   name                     = "idsecure-memorydb"
   node_type                = "db.t4g.small"
   num_shards               = 1

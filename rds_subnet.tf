@@ -1,3 +1,4 @@
+# rds_subnet.tf
 # Subnet Groups para RDS
 resource "aws_db_subnet_group" "idsecure-rds-sg" {
   name       = "idsecure-rds-subnet-group"

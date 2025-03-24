@@ -1,3 +1,4 @@
+# rds_security_groups.tf
 # Security Group para RDS
 resource "aws_security_group" "idsecure-sg-db" {
   vpc_id = aws_vpc.idsecure-vpc.id
