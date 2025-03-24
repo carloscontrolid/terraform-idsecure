@@ -67,3 +67,9 @@ variable "db_password" {
   type        = string
   sensitive   = true
 }
+
+variable "memorydb_password" {
+  description = "Senha do usuário do MemoryDB"
+  type        = string
+  sensitive   = true
+}

@@ -23,7 +23,7 @@ resource "aws_db_instance" "idsecure-mysql-rds" {
 
 # MemoryDB
 resource "aws_memorydb_cluster" "idsecure-memorydb" {
-  acl_name                 = "open-access"
+  acl_name                 = "idsecure-acl"
   name                     = "idsecure-memorydb"
   node_type                = "db.t4g.small"
   num_shards               = 1
