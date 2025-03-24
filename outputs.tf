@@ -13,14 +13,10 @@ output "allowed_ips" {
 }
 
 ####### DataBase #######
-# output "postgresql_endpoint" {
-#   value = aws_db_instance.idsecure-rds.endpoint
-# }
+output "mysql_endpoint" {
+  value = aws_db_instance.idsecure-mysql-rds.endpoint
+}
 
-# output "mysql_endpoint" {
-#   value = aws_db_instance.idsecure-mysql-rds.endpoint
-# }
-
-# output "memorydb_endpoint" {
-#   value = aws_memorydb_cluster.idsecure-memorydb.cluster_endpoint
-# }
+output "memorydb_endpoint" {
+  value = aws_memorydb_cluster.idsecure-memorydb.cluster_endpoint
+}
