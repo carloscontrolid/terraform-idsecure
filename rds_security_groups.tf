@@ -36,6 +36,14 @@ resource "aws_security_group" "idsecure-sg-memorydb" {
     description = "Allow Redis from trusted IPs"
   }
 
+  ingress {
+    from_port   = 6379
+    to_port     = 6379
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow Redis from all"
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
