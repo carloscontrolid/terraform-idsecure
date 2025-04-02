@@ -73,3 +73,9 @@ variable "memorydb_password" {
   type        = string
   sensitive   = true
 }
+
+variable "costcenter" {
+  description = "Cost center"
+  type        = string
+  default     = "idsecure"
+}

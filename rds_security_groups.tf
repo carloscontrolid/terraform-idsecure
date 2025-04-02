@@ -21,6 +21,7 @@ resource "aws_security_group" "idsecure-sg-db" {
   tags = {
     Name        = "idsecure-db-sg"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -54,5 +55,6 @@ resource "aws_security_group" "idsecure-sg-memorydb" {
   tags = {
     Name        = "idsecure-memorydb-sg"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }

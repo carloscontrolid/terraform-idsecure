@@ -10,6 +10,7 @@ resource "aws_db_subnet_group" "idsecure-rds-sg" {
   tags = {
     Name        = "idsecure-rds-subnet-group"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -23,6 +24,7 @@ resource "aws_db_subnet_group" "idsecure-sng-rds" {
   tags = {
     Name        = "idsecure-subnet-group-rds"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -37,5 +39,6 @@ resource "aws_memorydb_subnet_group" "idsecure-memorydb-sg" {
   tags = {
     Name        = "idsecure-memorydb-subnet-group"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }

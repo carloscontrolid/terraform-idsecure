@@ -18,6 +18,7 @@ resource "aws_db_instance" "idsecure-mysql-rds" {
   tags = {
     Name        = "idsecure-mysql-db"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -35,5 +36,6 @@ resource "aws_memorydb_cluster" "idsecure-memorydb" {
   tags = {
     Name        = "idsecure-memorydb"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }

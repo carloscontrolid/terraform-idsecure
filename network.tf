@@ -9,6 +9,7 @@ resource "aws_vpc" "idsecure-vpc" {
   tags = {
     Name        = "idsecure-main-vpc"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -19,6 +20,7 @@ resource "aws_internet_gateway" "idsecure-igw" {
   tags = {
     Name        = "idsecure-internet-gateway"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -34,6 +36,7 @@ resource "aws_route_table" "idsecure-public_rt" {
   tags = {
     Name        = "idsecure-public-route-table"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -47,6 +50,7 @@ resource "aws_subnet" "idsecure-public_subnet_a" {
   tags = {
     Name        = "idsecure-public-subnet-a"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -59,6 +63,7 @@ resource "aws_subnet" "idsecure-public_subnet_b" {
   tags = {
     Name        = "idsecure-public-subnet-b"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -70,6 +75,7 @@ resource "aws_subnet" "idsecure-private_subnet_a" {
   tags = {
     Name        = "idsecure-private-subnet-a"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -81,6 +87,7 @@ resource "aws_subnet" "idsecure-private_subnet_b" {
   tags = {
     Name        = "idsecure-private-subnet-b"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -117,6 +124,7 @@ resource "aws_security_group" "idsecure-sg-ssh" {
   tags = {
     Name        = "idsecure-sg-ssh"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
@@ -149,5 +157,6 @@ resource "aws_security_group" "idsecure-sg-portainer" {
   tags = {
     Name        = "idsecure-sg-portainer"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }

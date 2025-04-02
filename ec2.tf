@@ -13,5 +13,6 @@ resource "aws_instance" "idsecure-homolog-01" {
     Name        = "idsecure-homolog-01"
     SSH         = var.ssh_enable
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }

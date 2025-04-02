@@ -6,6 +6,7 @@ resource "aws_ecr_repository" "idsecure_repo" {
   tags = {
     Name        = "idsecure-ecr"
     Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
   }
 }
 
