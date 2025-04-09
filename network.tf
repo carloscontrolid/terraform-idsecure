@@ -173,6 +173,14 @@ resource "aws_security_group" "idsecure-sg-apps" {
   }
 
   ingress {
+    from_port   = 5001
+    to_port     = 5001
+    protocol    = "tcp"
+    cidr_blocks = var.trusted_ips
+    description = "Allow APP ports from trusted IPs"
+  }
+
+  ingress {
     from_port   = 5002
     to_port     = 5002
     protocol    = "tcp"
