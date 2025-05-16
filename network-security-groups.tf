@@ -1,6 +1,7 @@
 # Security Group
 resource "aws_security_group" "idsecure-sg-ssh" {
   vpc_id = aws_vpc.idsecure-vpc.id
+  name = "idsecure-sg-ssh"
 
   ingress {
     from_port   = 22
@@ -17,6 +18,11 @@ resource "aws_security_group" "idsecure-sg-ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
+  }
+
   tags = {
     Name        = "idsecure-sg-ssh"
     Terraformed = var.terraform_tag
@@ -26,6 +32,7 @@ resource "aws_security_group" "idsecure-sg-ssh" {
 
 resource "aws_security_group" "idsecure-sg-portainer" {
   vpc_id = aws_vpc.idsecure-vpc.id
+  name = "idsecure-sg-portainer"
 
   ingress {
     from_port   = 8000
@@ -50,6 +57,11 @@ resource "aws_security_group" "idsecure-sg-portainer" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
+  }
+
   tags = {
     Name        = "idsecure-sg-portainer"
     Terraformed = var.terraform_tag
@@ -59,6 +71,7 @@ resource "aws_security_group" "idsecure-sg-portainer" {
 
 resource "aws_security_group" "idsecure-sg-apps" {
   vpc_id = aws_vpc.idsecure-vpc.id
+  name = "idsecure-sg-apps"
 
   ingress {
     from_port   = 5000
@@ -99,6 +112,11 @@ resource "aws_security_group" "idsecure-sg-apps" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
+  }
+
   tags = {
     Name        = "idsecure-sg-apps"
     Terraformed = var.terraform_tag
@@ -124,6 +142,11 @@ resource "aws_security_group" "idsecure-sg-ssh-01" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
   }
 
   tags = {
@@ -158,6 +181,11 @@ resource "aws_security_group" "idsecure-sg-portainer-01" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
   }
 
   tags = {
@@ -208,6 +236,11 @@ resource "aws_security_group" "idsecure-sg-apps-01" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
   }
 
   tags = {

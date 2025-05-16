@@ -1,6 +1,7 @@
 # test_rds_security_group.tf
 resource "aws_security_group" "idsecure-teste-db" {
   vpc_id = aws_vpc.idsecure-vpc.id
+  name = "idsecure-test-sg"
 
   ingress {
     from_port   = 3308
