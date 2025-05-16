@@ -1,5 +1,4 @@
-#variables.ft
-
+# variables.ft
 variable "AWS_ACCESS_KEY_ID" {
   description = "AWS Access Key"
   type        = string
