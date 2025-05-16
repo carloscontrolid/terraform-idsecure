@@ -8,7 +8,7 @@ resource "aws_security_group" "idsecure-sg-db" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow MySQL from trusted IPs"
   }
 
@@ -35,7 +35,7 @@ resource "aws_security_group" "idsecure-sg-memorydb" {
     from_port   = 6379
     to_port     = 6379
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow Redis from trusted IPs"
   }
 
@@ -70,7 +70,7 @@ resource "aws_security_group" "idsecure-sg-db-01" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow MySQL from trusted IPs"
   }
 
@@ -97,7 +97,7 @@ resource "aws_security_group" "idsecure-sg-memorydb-01" {
     from_port   = 6379
     to_port     = 6379
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow Redis from trusted IPs"
   }
 

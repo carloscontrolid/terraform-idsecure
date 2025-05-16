@@ -6,7 +6,7 @@ resource "aws_security_group" "idsecure-sg-ssh" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow SSH from trusted IPs"
   }
 
@@ -31,7 +31,7 @@ resource "aws_security_group" "idsecure-sg-portainer" {
     from_port   = 8000
     to_port     = 8000
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Portainer8000"
   }
 
@@ -39,7 +39,7 @@ resource "aws_security_group" "idsecure-sg-portainer" {
     from_port   = 9443
     to_port     = 9443
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Portainer9443"
   }
 
@@ -64,7 +64,7 @@ resource "aws_security_group" "idsecure-sg-apps" {
     from_port   = 5000
     to_port     = 5000
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow APP ports from trusted IPs"
   }
 
@@ -72,7 +72,7 @@ resource "aws_security_group" "idsecure-sg-apps" {
     from_port   = 5001
     to_port     = 5001
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow APP ports from trusted IPs"
   }
 
@@ -80,7 +80,7 @@ resource "aws_security_group" "idsecure-sg-apps" {
     from_port   = 5002
     to_port     = 5002
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow APP ports from trusted IPs"
   }
 
@@ -88,7 +88,7 @@ resource "aws_security_group" "idsecure-sg-apps" {
     from_port   = 5003
     to_port     = 5003
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow APP ports from trusted IPs"
   }
 
@@ -115,7 +115,7 @@ resource "aws_security_group" "idsecure-sg-ssh-01" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow SSH from trusted IPs"
   }
 
@@ -141,7 +141,7 @@ resource "aws_security_group" "idsecure-sg-portainer-01" {
     from_port   = 8000
     to_port     = 8000
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Portainer8000"
   }
 
@@ -149,7 +149,7 @@ resource "aws_security_group" "idsecure-sg-portainer-01" {
     from_port   = 9443
     to_port     = 9443
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Portainer9443"
   }
 
@@ -175,7 +175,7 @@ resource "aws_security_group" "idsecure-sg-apps-01" {
     from_port   = 5000
     to_port     = 5000
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow APP ports from trusted IPs"
   }
 
@@ -183,7 +183,7 @@ resource "aws_security_group" "idsecure-sg-apps-01" {
     from_port   = 5001
     to_port     = 5001
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow APP ports from trusted IPs"
   }
 
@@ -191,7 +191,7 @@ resource "aws_security_group" "idsecure-sg-apps-01" {
     from_port   = 5002
     to_port     = 5002
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow APP ports from trusted IPs"
   }
 
@@ -199,7 +199,7 @@ resource "aws_security_group" "idsecure-sg-apps-01" {
     from_port   = 5003
     to_port     = 5003
     protocol    = "tcp"
-    cidr_blocks = var.trusted_ips
+    cidr_blocks = local.sorted_trusted_ips
     description = "Allow APP ports from trusted IPs"
   }
 

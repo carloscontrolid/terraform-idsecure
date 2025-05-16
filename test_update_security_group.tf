@@ -28,6 +28,7 @@ resource "null_resource" "attach_rds_sg" {
 
       # 1) Coleta SGs atuais da instância
       CURR_SGS=$(aws rds describe-db-instances \
+        --region sa-east-1 \
         --db-instance-identifier "$DB_ID" \
         --query 'DBInstances[0].VpcSecurityGroups[].VpcSecurityGroupId' \
         --output text)
@@ -39,6 +40,7 @@ resource "null_resource" "attach_rds_sg" {
 
       # 3) Aplica alteração (imediata)
       aws rds modify-db-instance \
+        --region sa-east-1 \
         --db-instance-identifier "$DB_ID" \
         --vpc-security-group-ids $FINAL_SGS \
         --apply-immediately \
