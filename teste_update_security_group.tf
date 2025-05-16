@@ -1,11 +1,5 @@
 # test_update-rds-security-groups.tf
-# variables
-variable "aws_profile" {
-  description = "AWS Profile"
-  type        = string
-  default     = "dev"
-}
-
+# Locals
 locals {
   rds_instances = ["idsecure-mysql-db"]
 }
@@ -27,7 +21,6 @@ resource "null_resource" "attach_rds_sg" {
       set -euo pipefail
 
       DB_ID=${each.key}
-      PROFILE=${var.aws_profile}
       NEW_SG=${aws_security_group.idsecure-teste-db.id}
       OLD_SG="sg-00730a0f3d047f925"
 
@@ -36,7 +29,6 @@ resource "null_resource" "attach_rds_sg" {
       # 1) Coleta SGs atuais da instância
       CURR_SGS=$(aws rds describe-db-instances \
         --db-instance-identifier "$DB_ID" \
-        --profile "$PROFILE" \
         --query 'DBInstances[0].VpcSecurityGroups[].VpcSecurityGroupId' \
         --output text)
 
@@ -50,7 +42,6 @@ resource "null_resource" "attach_rds_sg" {
         --db-instance-identifier "$DB_ID" \
         --vpc-security-group-ids $FINAL_SGS \
         --apply-immediately \
-        --profile "$PROFILE"
 
       echo "    ✅ $DB_ID atualizado."
     EOT
