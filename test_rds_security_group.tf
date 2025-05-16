@@ -18,6 +18,11 @@ resource "aws_security_group" "idsecure-teste-db" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
+  }
+
   tags = {
     Name        = "idsecure-test-sg"
     Terraformed = var.terraform_tag

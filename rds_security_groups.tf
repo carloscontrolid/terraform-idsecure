@@ -19,6 +19,11 @@ resource "aws_security_group" "idsecure-sg-db" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
+  }
+
   tags = {
     Name        = "idsecure-db-sg"
     Terraformed = var.terraform_tag
@@ -54,6 +59,11 @@ resource "aws_security_group" "idsecure-sg-memorydb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
+  }
+
   tags = {
     Name        = "idsecure-memorydb-sg"
     Terraformed = var.terraform_tag
@@ -79,6 +89,11 @@ resource "aws_security_group" "idsecure-sg-db-01" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
   }
 
   tags = {
@@ -114,6 +129,11 @@ resource "aws_security_group" "idsecure-sg-memorydb-01" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
   }
 
   tags = {
