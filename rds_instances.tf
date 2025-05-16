@@ -14,6 +14,7 @@ resource "aws_db_instance" "idsecure-mysql-rds" {
   publicly_accessible    = true
   skip_final_snapshot    = true
   port                   = 3306
+  apply_immediately      = true
 
   tags = {
     Name        = "idsecure-mysql-db"
