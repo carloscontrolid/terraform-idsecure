@@ -2,6 +2,7 @@
 # Security Group para RDS
 resource "aws_security_group" "idsecure-sg-db" {
   vpc_id = aws_vpc.idsecure-vpc.id
+  name = "idsecure-sg-db"
 
   ingress {
     from_port   = 3306
@@ -28,7 +29,7 @@ resource "aws_security_group" "idsecure-sg-db" {
 # Security Group para MemoryDB
 resource "aws_security_group" "idsecure-sg-memorydb" {
   vpc_id = aws_vpc.idsecure-vpc.id
-
+  name = "idsecure-memorydb-sg"
   ingress {
     from_port   = 6379
     to_port     = 6379
