@@ -5,7 +5,7 @@ terraform {
     organization = "ControliD"
 
     workspaces {
-      name = "terraform-idsecure"
+      name = "terraform-idsecure-sandbox-01"
     }
   }
 }

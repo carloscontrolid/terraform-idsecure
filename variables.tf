@@ -14,21 +14,25 @@ variable "AWS_SECRET_ACCESS_KEY" {
 variable "region" {
   description = "AWS Region"
   type        = string
+  default     = "sa-east-1"
 }
 
 variable "availability_zone" {
   description = "Availability Zone"
   type        = string
+  default     = "sa-east-1a"
 }
 
 variable "instance_type" {
   description = "Tipo da instância EC2"
   type        = string
+  default     = "t2.medium"
 }
 
 variable "ubuntu_ami_id" {
   description = "AMI ID específica para Ubuntu na região"
   type        = string
+  default     = "ami-0e4d8b17924d1eda7"
 }
 
 variable "pub_key_carlos" {
