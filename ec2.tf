@@ -19,7 +19,7 @@ resource "aws_instance" "idsecure-homolog-01" {
 
 resource "aws_instance" "idsecure-windows-01" {
   ami                    = var.windows_ami_id
-  instance_type          = var_windows.instance_type
+  instance_type          = var.windows_instance_type
   key_name               = aws_key_pair.terraform_key_pub.key_name
   vpc_security_group_ids = [aws_security_group.idsecure-sg-rdp.id]
   subnet_id              = aws_subnet.idsecure-public_subnet_a.id
