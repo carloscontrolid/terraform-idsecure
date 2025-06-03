@@ -1,10 +1,4 @@
 # ec2_windows.tf
-
-resource "aws_key_pair" "windows_server_key" {
-  key_name   = var.windows_server_key
-  public_key = file(".keys/windows_server_key.pub")
-}
-
 resource "aws_instance" "idsecure-windows-01" {
   ami                    = var.windows_ami_id
   instance_type          = var.windows_instance_type

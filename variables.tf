@@ -57,7 +57,6 @@ variable "windows_server_key" {
   type        = string
 }
 
-
 variable "terraform_tag" {
   description = "Default tag for terraformed resources"
   type        = bool
