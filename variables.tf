@@ -35,6 +35,12 @@ variable "ubuntu_ami_id" {
   default     = "ami-0e4d8b17924d1eda7"
 }
 
+variable "windows_ami_id" {
+  description = "AMI ID específica para Windows Server na região"
+  type        = string
+  default     = "ami-0efbe79a4e1e1cade"
+}
+
 variable "pub_key_carlos" {
   description = "Public Key Carlos"
   type        = string

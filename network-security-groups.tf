@@ -123,3 +123,34 @@ resource "aws_security_group" "idsecure-sg-apps" {
     CostCenter  = var.costcenter
   }
 }
+
+resource "aws_security_group" "idsecure-sg-rdp" {
+  vpc_id = aws_vpc.idsecure-vpc.id
+  name = "idsecure-sg-rdp"
+
+  ingress {
+    from_port   = 3389
+    to_port     = 3389
+    protocol    = "tcp"
+    cidr_blocks = local.sorted_trusted_ips
+    description = "Allow RDP from trusted IPs"
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy = false
+  }
+
+  tags = {
+    Name        = "idsecure-sg-rdp"
+    Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
+  }
+}

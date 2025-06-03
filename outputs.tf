@@ -1,11 +1,17 @@
 # output.tf
 
 output "instance_ids" {
-  value = {idsecure-homolog-01 = aws_instance.idsecure-homolog-01.id}
+  value = {
+    idsecure-homolog-01 = aws_instance.idsecure-homolog-01.id
+    idsecure-windows-01 = aws_instance.idsecure-windows-01.id
+  }
 }
 
 output "public_ips" {
-  value = {idsecure-homolog-01 = aws_instance.idsecure-homolog-01.public_ip}
+  value = {
+    idsecure-homolog-01 = aws_instance.idsecure-homolog-01.public_ip
+    idsecure-windows-01 = aws_instance.idsecure-windows-01.public_ip
+  }
 }
 
 output "allowed_ips" {
