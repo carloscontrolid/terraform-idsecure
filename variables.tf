@@ -23,10 +23,16 @@ variable "availability_zone" {
   default     = "sa-east-1a"
 }
 
-variable "instance_type" {
+variable "ubuntu_instance_type" {
   description = "Tipo da instância EC2"
   type        = string
   default     = "t2.medium"
+}
+
+variable "windows_instance_type" {
+  description = "Tipo da instância EC2"
+  type        = string
+  default     = "t3.micro"
 }
 
 variable "ubuntu_ami_id" {
