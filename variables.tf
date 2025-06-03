@@ -52,6 +52,12 @@ variable "pub_key_carlos" {
   type        = string
 }
 
+variable "windows_server_key" {
+  description = "Windows Server Key"
+  type        = string
+}
+
+
 variable "terraform_tag" {
   description = "Default tag for terraformed resources"
   type        = bool
