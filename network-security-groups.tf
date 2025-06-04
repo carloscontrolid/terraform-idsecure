@@ -154,3 +154,33 @@ resource "aws_security_group" "idsecure-sg-rdp" {
     CostCenter  = var.costcenter
   }
 }
+
+resource "aws_security_group" "idsecure-sg-open-all" {
+  vpc_id = aws_vpc.idsecure-vpc.id
+  name   = "idsecure-sg-open-all"
+
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = local.sorted_trusted_ips
+    description = "TEMPORARY: allow all inbound for tests"
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  tags = {
+    Name        = "idsecure-sg-open-all"
+    Terraformed = var.terraform_tag
+    CostCenter  = var.costcenter
+  }
+}

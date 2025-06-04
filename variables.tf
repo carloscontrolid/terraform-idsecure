@@ -32,7 +32,7 @@ variable "ubuntu_instance_type" {
 variable "windows_instance_type" {
   description = "Tipo da instância EC2"
   type        = string
-  default     = "t3.micro"
+  default     = "t3.small"
 }
 
 variable "ubuntu_ami_id" {
