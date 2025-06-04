@@ -64,6 +64,10 @@ variable "ssh_enable" {
   default     = true
 }
 
+locals {
+  sorted_trusted_ips = sort(var.trusted_ips)
+}
+
 variable "trusted_ips" {
   type = set(string)
   default = [
@@ -77,13 +81,21 @@ variable "trusted_ips" {
     "187.75.34.21/32",
     "200.171.205.98/32",
     "201.6.116.97/32",
-    "187.180.190.16/32" # Rodrigo Oliveira
+    "187.180.190.16/32", # Rodrigo Oliveira
+    "189.68.43.55/32" # Carlos Veloso
   ]
 }
 
-locals {
-  sorted_trusted_ips = sort(var.trusted_ips)
-}
+# locals {
+#   sorted_trusted_ips_users = sort(var.trusted_ips_users)
+# }
+
+# variable "trusted_ips_users" {
+#   type = set(string)
+#   default = [
+#     "189.68.43.55/32" # Carlos Veloso
+#   ]
+# }
 
 ####### DATABASE #######
 variable "db_username" {
