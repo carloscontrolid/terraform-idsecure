@@ -95,7 +95,7 @@ variable "trusted_ips_users" {
   default = [
     "187.180.190.16/32", # Rodrigo Oliveira
     "189.68.43.55/32", # Carlos Veloso
-    "187.56.173.30/32" # Lucas Del Fiol
+    "187.57.15.173/32" # Lucas Del Fiol
   ]
 }
 
